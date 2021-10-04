@@ -31,7 +31,8 @@ export default {
   margin: 2% 0 0 0;
 
   h1 {
-    margin-bottom: 5%;
+    margin: 40px 0 0;
+    color: #ffe81a;
   }
 }
 </style>

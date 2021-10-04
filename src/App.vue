@@ -27,8 +27,6 @@ export default {
       this.people = data.results;
       const numPeople = data.count;
 
-      console.log("data: ", data);
-
       this.perPage = this.people.length;
       this.pages =
         Math.ceil(numPeople / this.people.length) % 2 !== 0
@@ -54,6 +52,14 @@ export default {
   width: 100%;
   overflow-x: hidden;
   background-color: black;
+
+  h1 {
+    font-size: 2.3rem;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
 }
 
 #nav {
@@ -66,7 +72,7 @@ export default {
     text-decoration: none;
 
     &.router-link-exact-active {
-      color: #cff4cf;
+      color: #ffe81a;
       text-decoration: underline;
     }
   }

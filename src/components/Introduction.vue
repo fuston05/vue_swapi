@@ -21,11 +21,12 @@ export default {
   height: 100vh;
 
   h1 {
-    color: #cff4cf;
+    color: #ffe81a;
     margin: 40px 0 0;
   }
   p {
     margin: 40px 0;
+    color: #cff4cf;
   }
 }
 </style>
