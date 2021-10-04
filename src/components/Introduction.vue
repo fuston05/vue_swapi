@@ -27,6 +27,7 @@ export default {
   p {
     margin: 40px 0;
     color: #cff4cf;
+    text-shadow: 1px 1px 1px #333;
   }
 }
 </style>
