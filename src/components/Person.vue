@@ -30,6 +30,7 @@ export default {
   background-color: rgb(207, 243, 207);
   border-radius: 5px;
   padding: 2%;
+  opacity: 0.8;
 
   @media screen and (max-width: 600px) {
     width: 100%;

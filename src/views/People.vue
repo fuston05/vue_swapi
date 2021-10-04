@@ -30,6 +30,11 @@ export default {
   padding: 2%;
   margin: 0 0 0 0;
 
+  background-image: url("/img/swapi_bg2.jpeg");
+  background-size: contain;
+  background-position: top left;
+  background-repeat: no-repeat;
+
   h1 {
     margin: 40px 0;
     color: #ffe81a;

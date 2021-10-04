@@ -21,5 +21,10 @@ export default {
 <style scoped lang="scss">
 .home {
   padding: 2%;
+
+  background-image: url("/img/swapi_bg.jpeg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>
