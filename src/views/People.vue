@@ -28,10 +28,10 @@ export default {
 <style lang="scss" scoped>
 .people {
   padding: 2%;
-  margin: 2% 0 0 0;
+  margin: 0 0 0 0;
 
   h1 {
-    margin: 40px 0 0;
+    margin: 40px 0;
     color: #ffe81a;
   }
 }

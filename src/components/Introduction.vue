@@ -22,7 +22,7 @@ export default {
 
   h1 {
     color: #ffe81a;
-    margin: 40px 0 0;
+    margin: 40px 0;
   }
   p {
     margin: 40px 0;
