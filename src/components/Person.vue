@@ -27,7 +27,7 @@ export default {
 .person {
   margin: 2% auto;
   width: 50%;
-  background-color: rgb(207, 243, 207);
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   padding: 2%;
   opacity: 0.8;

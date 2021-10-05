@@ -1,6 +1,5 @@
 <template>
   <div class="introduction">
-    <h1>Star Wars API</h1>
     <p>
       Please make a selection above to view Star Wars Characters.
     </p>
@@ -19,11 +18,12 @@ export default {
 <style scoped lang="scss">
 .introduction {
   height: 100vh;
+  padding: 2%;
+  background-image: url("/img/swapi_bg.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  h1 {
-    color: #ffe81a;
-    margin: 40px 0;
-  }
   p {
     margin: 40px 0;
     color: #cff4cf;

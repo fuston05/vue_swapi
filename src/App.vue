@@ -1,41 +1,18 @@
 <template>
-  <nav id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/people">People</router-link>
-  </nav>
-  <router-view :people="people" />
+  <Nav />
+  <router-view />
 </template>
 
 <script>
-/* eslint-disable space-before-function-paren */
 /* eslint-disable semi */
 /* eslint-disable quotes */
+import Nav from "./components/Nav.vue";
+
 export default {
   name: "app",
-  data() {
-    return {
-      people: [],
-      pages: 0,
-      perPage: 0
-    };
-  },
-  methods: {
-    async getPeople() {
-      const res = await fetch(`${process.env.VUE_APP_API}/people`);
 
-      const data = await res.json();
-      this.people = data.results;
-      const numPeople = data.count;
-
-      this.perPage = this.people.length;
-      this.pages =
-        Math.ceil(numPeople / this.people.length) % 2 !== 0
-          ? Math.ceil(numPeople / this.people.length)
-          : Math.ceil(numPeople / this.people.length) + 1;
-    }
-  },
-  created() {
-    this.getPeople();
+  components: {
+    Nav
   }
 };
 </script>
@@ -65,9 +42,16 @@ export default {
 #nav {
   padding: 30px;
   border-bottom: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    color: #ffe81a;
+  }
 
   a {
     font-weight: bold;
+    font-size: 1.3rem;
     color: #ffffff;
     text-decoration: none;
 
