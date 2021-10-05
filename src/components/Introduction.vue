@@ -19,7 +19,7 @@ export default {
 .introduction {
   height: 100vh;
   padding: 2%;
-  background-image: url("/img/swapi_bg.jpeg");
+  background-image: url("/img/swapi_bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

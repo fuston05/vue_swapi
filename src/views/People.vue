@@ -2,6 +2,15 @@
   <div class="people">
     <h1>Star Wars Characters</h1>
     <Person :person="person" :key="person.name" v-for="person in people" />
+    <div class="pagination">
+      <span v-if="prevPage !== ''" class="prev" @click="getPeople(prevPage)"
+        >&lt;&lt; Prev</span
+      >{{ " " }} <span class="page">{{ this.page }}</span
+      >{{ " " }}
+      <span v-if="nextPage !== ''" class="next" @click="getPeople(nextPage)"
+        >Next &gt;&gt;</span
+      >
+    </div>
     <toTop />
   </div>
 </template>
@@ -21,8 +30,9 @@ export default {
   data() {
     return {
       people: [],
-      pages: 0,
-      perPage: 0
+      page: 1,
+      nextPage: "",
+      prevPage: ""
     };
   },
 
@@ -34,15 +44,20 @@ export default {
     log(info) {
       console.log("info: ", info);
     },
-    async getPeople() {
-      const res = await fetch(`${process.env.VUE_APP_API}/people`);
+    async getPeople(endpoint = `${process.env.VUE_APP_API}/people`) {
+      const res = await fetch(`${endpoint}`);
 
       const data = await res.json();
       this.people = data.results;
-      const totalItems = data.count;
 
-      this.perPage = this.people.length;
-      this.pages = Math.floor((totalItems + this.perPage - 1) / this.perPage);
+      if (data.next) {
+        this.nextPage = data.next;
+      }
+      if (data.previous) {
+        this.prevPage = data.previous;
+      }
+
+      console.log("people data: ", data);
     }
   },
   created() {
@@ -57,9 +72,13 @@ export default {
   margin: 0 0 0 0;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-image: url("/img/swapi_bg2.jpeg");
+  background-image: url("/img/swapi_bg2.png");
   background-size: contain;
   background-position: top left;
+
+  .pagination {
+    color: #fff;
+  }
 
   h1 {
     margin: 40px 0;
