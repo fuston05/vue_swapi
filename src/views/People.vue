@@ -3,11 +3,11 @@
     <h1>Star Wars Characters</h1>
     <Person :person="person" :key="person.name" v-for="person in people" />
     <div class="pagination">
-      <span v-if="prevPage !== ''" class="prev" @click="getPeople(prevPage)"
+      <span v-show="prevPage !== ''" class="prev" @click="getPeople(prevPage)"
         >&lt;&lt; Prev</span
       >{{ " " }} <span class="page">{{ this.page }}</span
       >{{ " " }}
-      <span v-if="nextPage !== ''" class="next" @click="getPeople(nextPage)"
+      <span v-show="nextPage !== ''" class="next" @click="getPeople(nextPage)"
         >Next &gt;&gt;</span
       >
     </div>
@@ -52,12 +52,18 @@ export default {
 
       if (data.next) {
         this.nextPage = data.next;
+      } else {
+        this.nextPage = "";
       }
+
       if (data.previous) {
         this.prevPage = data.previous;
+      } else {
+        this.prevPage = "";
       }
 
       console.log("people data: ", data);
+      console.log("prev: ", this.prevPage, "next: ", this.nextPage);
     }
   },
   created() {
@@ -78,6 +84,11 @@ export default {
 
   .pagination {
     color: #fff;
+
+    .prev,
+    .next {
+      display: inline-block;
+    }
   }
 
   h1 {
