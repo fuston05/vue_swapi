@@ -9,8 +9,6 @@
 </template>
 
 <script>
-/* eslint-disable semi */
-/* eslint-disable quotes */
 export default {
   name: "Nav"
 };

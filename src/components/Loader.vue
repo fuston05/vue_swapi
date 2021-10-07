@@ -3,10 +3,6 @@
 </template>
 
 <script>
-/* eslint-disable indent */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable semi */
-/* eslint-disable quotes */
 export default {
   name: "Loader",
   props: {

@@ -5,8 +5,6 @@
 </template>
 
 <script>
-/* eslint-disable semi */
-/* eslint-disable quotes */
 // @ is an alias to /src
 import Introduction from "@/components/Introduction.vue";
 

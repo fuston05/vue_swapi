@@ -12,8 +12,6 @@
 
 <script>
 export default {
-  /* eslint-disable semi */
-  /* eslint-disable quotes */
   name: "Person",
   props: {
     person: {

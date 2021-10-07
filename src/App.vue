@@ -4,8 +4,6 @@
 </template>
 
 <script>
-/* eslint-disable semi */
-/* eslint-disable quotes */
 import Nav from "./components/Nav.vue";
 
 export default {

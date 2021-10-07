@@ -5,9 +5,6 @@
 </template>
 
 <script>
-/* eslint-disable space-before-function-paren */
-/* eslint-disable semi */
-/* eslint-disable quotes */
 export default {
   name: "ToTop",
   methods: {

@@ -17,10 +17,6 @@
 </template>
 
 <script>
-/* eslint-disable indent */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable semi */
-/* eslint-disable quotes */
 import Person from "../components/Person.vue";
 import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader.vue";
