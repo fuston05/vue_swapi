@@ -1,30 +1,31 @@
 <template>
   <div class="people">
     <h1>Star Wars Characters</h1>
+    <Loader v-if="!people.length" text="Loading..." />
     <Person :person="person" :key="person.name" v-for="person in people" />
-    <div class="pagination">
-      <span v-show="prevPage !== ''" class="prev" @click="getPeople(prevPage)"
-        >&lt;&lt; Prev</span
+    <div v-if="people.length" class="pagination">
+      <span v-show="prevPage !== ''" class="prev" @click="getPeople(prevPage)">
+        <img alt="left arrow" src="/img/icons/leftArrow.png" /> </span
       >{{ " " }} <span class="page">{{ this.page }}</span
       >{{ " " }}
       <span v-show="nextPage !== ''" class="next" @click="getPeople(nextPage)"
-        >Next &gt;&gt;</span
-      >
+        ><img alt="left arrow" src="/img/icons/rightArrow.png"
+      /></span>
     </div>
     <toTop />
   </div>
 </template>
 
 <script>
+/* eslint-disable indent */
+/* eslint-disable space-before-function-paren */
 /* eslint-disable semi */
 /* eslint-disable quotes */
 import Person from "../components/Person.vue";
 import ToTop from "../components/ToTop.vue";
+import Loader from "../components/Loader.vue";
 
 export default {
-  /* eslint-disable space-before-function-paren */
-  /* eslint-disable semi */
-  /* eslint-disable quotes */
   name: "People",
 
   data() {
@@ -38,7 +39,8 @@ export default {
 
   components: {
     Person,
-    ToTop
+    ToTop,
+    Loader
   },
   methods: {
     log(info) {
@@ -50,6 +52,31 @@ export default {
       const data = await res.json();
       this.people = data.results;
 
+      // set up for page calculation
+      const next = data.next
+        ? data.next
+            .split("/")
+            .splice(-1)[0]
+            .slice(-1)
+        : null;
+      const prev = data.prev
+        ? data.prev
+            .split("/")
+            .splice(-1)[0]
+            .slice(-1)
+        : null;
+
+      // calc current page num
+      this.page =
+        prev && next
+          ? next - prev
+          : prev && !next
+          ? prev + 1
+          : next && !prev
+          ? next - 1
+          : this.page;
+
+      // hide prev or next buttons if no more pages
       if (data.next) {
         this.nextPage = data.next;
       } else {
@@ -61,9 +88,6 @@ export default {
       } else {
         this.prevPage = "";
       }
-
-      console.log("people data: ", data);
-      console.log("prev: ", this.prevPage, "next: ", this.nextPage);
     }
   },
   created() {
@@ -75,6 +99,7 @@ export default {
 <style lang="scss" scoped>
 .people {
   padding: 2%;
+  height: 100vh;
   margin: 0 0 0 0;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -83,11 +108,39 @@ export default {
   background-position: top left;
 
   .pagination {
-    color: #fff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    padding: 1%;
+    text-align: center;
+    margin: 5% auto 2% auto;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    .page {
+      font-size: 1.3rem;
+      margin: 0 20px;
+      width: 50px;
+    }
 
     .prev,
     .next {
-      display: inline-block;
+      margin: 0 5px;
+      width: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
     }
   }
 

@@ -27,10 +27,9 @@ export default {
 .person {
   margin: 2% auto;
   width: 50%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
   padding: 2%;
-  opacity: 0.8;
 
   @media screen and (max-width: 600px) {
     width: 100%;
