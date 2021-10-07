@@ -1,7 +1,7 @@
 <template>
   <div class="people">
     <h1>Star Wars Characters</h1>
-    <Loader v-if="!people.length" text="Loading..." />
+    <Loader v-if="!people.length" />
     <Person :person="person" :key="person.name" v-for="person in people" />
     <div v-if="people.length" class="pagination">
       <span v-show="prevPage !== ''" class="prev" @click="getPeople(prevPage)">
@@ -19,7 +19,7 @@
 <script>
 import Person from "../components/Person.vue";
 import ToTop from "../components/ToTop.vue";
-import Loader from "../components/Loader.vue";
+import Loader from "../components/Loader/Loader.vue";
 
 export default {
   name: "People",
