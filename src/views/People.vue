@@ -12,18 +12,8 @@
       :page="page"
       :totalPages="totalPages"
     />
-    <!-- <div v-if="people.length" class="pagination">
-      <span v-show="prevPage !== ''" class="prev" @click="getPeople(prevPage)">
-        <img alt="left arrow" src="/img/topArrow.png" /> </span
-      >{{ " " }} <span class="page">{{ this.page }}</span
-      >{{ " " }}
-
-      <span v-show="nextPage !== ''" class="next" @click="getPeople(nextPage)">
-        <img alt="left arrow" src="/img/topArrow.png" />
-      </span>
-    </div> -->
-
     <toTop />
+    <Footer />
   </div>
 </template>
 
@@ -32,6 +22,7 @@ import Person from "../components/Person.vue";
 import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader/Loader.vue";
 import Pagination from "../components/Pagination.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "People",
@@ -52,7 +43,8 @@ export default {
     Person,
     ToTop,
     Loader,
-    Pagination
+    Pagination,
+    Footer
   },
 
   methods: {
@@ -103,69 +95,17 @@ export default {
 
 <style lang="scss" scoped>
 .people {
-  padding: 2%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 0 0 0;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-image: url("/img/swapi_bg2.png");
   background-size: contain;
-  background-position: top left;
-
-  // .pagination {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   width: 25%;
-  //   padding: 1%;
-  //   text-align: center;
-  //   margin: 5% auto 2% auto;
-
-  //   @media (max-width: 600px) {
-  //     width: 35%;
-  //   }
-
-  //   .page {
-  //     font-size: 1.3rem;
-  //     margin: 0 20px;
-  //     width: 50px;
-  //     color: #fff;
-  //   }
-
-  //   .prev {
-  //     img {
-  //       transform: rotate(-90deg);
-  //     }
-  //   }
-
-  //   .next {
-  //     img {
-  //       transform: rotate(90deg);
-  //     }
-  //   }
-
-  //   .prev,
-  //   .next {
-  //     margin: 0 5px;
-  //     width: 45px;
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     opacity: 0.6;
-
-  //     &:hover {
-  //       cursor: pointer;
-  //       opacity: 0.8;
-  //     }
-
-  //     img {
-  //       width: 100%;
-  //     }
-  //   }
-  // }
+  // background-position: top left;
 
   h1 {
-    margin: 40px 0;
+    margin: 40px 0 40px 2%;
+    padding: 2% 0 0 0;
     color: #ffe81a;
   }
 }
