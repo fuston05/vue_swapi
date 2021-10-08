@@ -1,5 +1,5 @@
 <template>
-  <div class="people">
+  <div class="people pageContainer">
     <h1>Star Wars Characters</h1>
 
     <Loader v-if="!people.length" />
@@ -13,7 +13,6 @@
       :totalPages="totalPages"
     />
     <toTop />
-    <Footer />
   </div>
 </template>
 
@@ -22,7 +21,6 @@ import Person from "../components/Person.vue";
 import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader/Loader.vue";
 import Pagination from "../components/Pagination.vue";
-import Footer from "../components/Footer.vue";
 
 export default {
   name: "People",
@@ -43,8 +41,7 @@ export default {
     Person,
     ToTop,
     Loader,
-    Pagination,
-    Footer
+    Pagination
   },
 
   methods: {
@@ -95,8 +92,6 @@ export default {
 
 <style lang="scss" scoped>
 .people {
-  min-height: 100vh;
-  padding-top: 2%;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-image: url("/img/swapi_bg2.png");
@@ -104,7 +99,6 @@ export default {
   background-position: top left;
 
   h1 {
-    margin: 40px 2%;
     color: #ffe81a;
   }
 }

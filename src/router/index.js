@@ -1,12 +1,12 @@
 /* eslint-disable semi */
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import Introduction from "../views/Introduction.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "Introduction",
+    component: Introduction
   },
   {
     path: "/people",

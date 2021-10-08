@@ -1,16 +1,19 @@
 <template>
   <Nav />
   <router-view />
+  <Footer />
 </template>
 
 <script>
 import Nav from "./components/Nav.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
 
   components: {
-    Nav
+    Nav,
+    Footer
   }
 };
 </script>
@@ -25,15 +28,13 @@ export default {
 }
 #app {
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
   background-color: black;
 
-  h1 {
-    font-size: 2.3rem;
-  }
-
-  p {
-    font-size: 1.8rem;
+  .pageContainer {
+    min-height: 100vh;
+    padding: 2%;
   }
 }
 </style>
