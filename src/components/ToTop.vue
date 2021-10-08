@@ -24,17 +24,17 @@ export default {
 <style lang="scss" scoped>
 .toTop {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 25px;
+  right: 25px;
   z-index: 5;
+  opacity: 0.6;
 
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
   img {
-    width: 50px;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
+    width: 45px;
   }
 }
 </style>

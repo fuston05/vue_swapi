@@ -1,17 +1,28 @@
 <template>
   <div class="people">
     <h1>Star Wars Characters</h1>
+
     <Loader v-if="!people.length" />
+
     <Person :person="person" :key="person.name" v-for="person in people" />
-    <div v-if="people.length" class="pagination">
+
+    <Pagination
+      @prev-click="this.getPeople(prevPage)"
+      @next-click="this.getPeople(nextPage)"
+      :page="page"
+      :totalPages="totalPages"
+    />
+    <!-- <div v-if="people.length" class="pagination">
       <span v-show="prevPage !== ''" class="prev" @click="getPeople(prevPage)">
-        <img alt="left arrow" src="/img/icons/leftArrow.png" /> </span
+        <img alt="left arrow" src="/img/topArrow.png" /> </span
       >{{ " " }} <span class="page">{{ this.page }}</span
       >{{ " " }}
-      <span v-show="nextPage !== ''" class="next" @click="getPeople(nextPage)"
-        ><img alt="left arrow" src="/img/icons/rightArrow.png"
-      /></span>
-    </div>
+
+      <span v-show="nextPage !== ''" class="next" @click="getPeople(nextPage)">
+        <img alt="left arrow" src="/img/topArrow.png" />
+      </span>
+    </div> -->
+
     <toTop />
   </div>
 </template>
@@ -20,6 +31,7 @@
 import Person from "../components/Person.vue";
 import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader/Loader.vue";
+import Pagination from "../components/Pagination.vue";
 
 export default {
   name: "People",
@@ -27,63 +39,66 @@ export default {
   data() {
     return {
       people: [],
+      perPage: null,
       page: 1,
       nextPage: "",
-      prevPage: ""
+      prevPage: "",
+      totalPages: 0,
+      isLoading: false
     };
   },
 
   components: {
     Person,
     ToTop,
-    Loader
+    Loader,
+    Pagination
   },
+
   methods: {
-    log(info) {
-      console.log("info: ", info);
-    },
-    async getPeople(endpoint = `${process.env.VUE_APP_API}/people`) {
-      const res = await fetch(`${endpoint}`);
+    async getPeople(reqPage = "") {
+      if (this.isLoading || reqPage === null) return;
+
+      this.isLoading = true;
+
+      const res = await fetch(
+        `${process.env.VUE_APP_API}/people/?page=${reqPage}`
+      );
 
       const data = await res.json();
       this.people = data.results;
 
+      this.perPage = this.perPage ? this.perPage : data.results.length;
+
+      this.page = reqPage ? parseInt(reqPage) : 1;
+
+      console.log("data: ", data);
+
+      // calc total pages
+      this.totalPages = Math.floor((data.count - 1) / this.perPage + 1);
+
       // set up for page calculation
-      const next = data.next
+      this.nextPage = data.next
         ? data.next
             .split("/")
             .splice(-1)[0]
             .slice(-1)
         : null;
-      const prev = data.prev
-        ? data.prev
+
+      console.log("next: ", this.nextPage);
+
+      this.prevPage = data.previous
+        ? data.previous
             .split("/")
             .splice(-1)[0]
             .slice(-1)
         : null;
 
-      // calc current page num
-      this.page =
-        prev && next
-          ? next - prev
-          : prev && !next
-          ? prev + 1
-          : next && !prev
-          ? next - 1
-          : this.page;
+      console.log("prev: ", this.prevPage);
 
-      // hide prev or next buttons if no more pages
-      if (data.next) {
-        this.nextPage = data.next;
-      } else {
-        this.nextPage = "";
-      }
+      console.log("page: ", this.page);
 
-      if (data.previous) {
-        this.prevPage = data.previous;
-      } else {
-        this.prevPage = "";
-      }
+      this.isLoading = false;
     }
   },
   created() {
@@ -103,42 +118,57 @@ export default {
   background-size: contain;
   background-position: top left;
 
-  .pagination {
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    padding: 1%;
-    text-align: center;
-    margin: 5% auto 2% auto;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+  // .pagination {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 25%;
+  //   padding: 1%;
+  //   text-align: center;
+  //   margin: 5% auto 2% auto;
 
-    .page {
-      font-size: 1.3rem;
-      margin: 0 20px;
-      width: 50px;
-    }
+  //   @media (max-width: 600px) {
+  //     width: 35%;
+  //   }
 
-    .prev,
-    .next {
-      margin: 0 5px;
-      width: 45px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  //   .page {
+  //     font-size: 1.3rem;
+  //     margin: 0 20px;
+  //     width: 50px;
+  //     color: #fff;
+  //   }
 
-      img {
-        width: 100%;
-      }
+  //   .prev {
+  //     img {
+  //       transform: rotate(-90deg);
+  //     }
+  //   }
 
-      &:hover {
-        cursor: pointer;
-        opacity: 0.8;
-      }
-    }
-  }
+  //   .next {
+  //     img {
+  //       transform: rotate(90deg);
+  //     }
+  //   }
+
+  //   .prev,
+  //   .next {
+  //     margin: 0 5px;
+  //     width: 45px;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     opacity: 0.6;
+
+  //     &:hover {
+  //       cursor: pointer;
+  //       opacity: 0.8;
+  //     }
+
+  //     img {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
 
   h1 {
     margin: 40px 0;

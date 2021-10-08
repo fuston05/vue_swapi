@@ -15,7 +15,7 @@ export default {
       default: ""
     },
     image: {
-      type: Image,
+      type: String,
       default: loaderImage
     }
   }
@@ -33,7 +33,7 @@ export default {
   }
 
   img {
-    width: 100px;
+    width: 20%;
   }
 }
 </style>
