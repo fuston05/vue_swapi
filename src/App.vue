@@ -36,27 +36,4 @@ export default {
     font-size: 1.8rem;
   }
 }
-
-#nav {
-  padding: 30px;
-  border-bottom: 1px solid green;
-  display: flex;
-  justify-content: space-between;
-
-  h1 {
-    color: #ffe81a;
-  }
-
-  a {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #ffffff;
-    text-decoration: none;
-
-    &.router-link-exact-active {
-      color: #ffe81a;
-      text-decoration: underline;
-    }
-  }
-}
 </style>

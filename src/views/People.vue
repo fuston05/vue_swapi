@@ -96,16 +96,15 @@ export default {
 <style lang="scss" scoped>
 .people {
   min-height: 100vh;
-  margin: 0 0 0 0;
+  padding-top: 2%;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-image: url("/img/swapi_bg2.png");
   background-size: contain;
-  // background-position: top left;
+  background-position: top left;
 
   h1 {
-    margin: 40px 0 40px 2%;
-    padding: 2% 0 0 0;
+    margin: 40px 2%;
     color: #ffe81a;
   }
 }
