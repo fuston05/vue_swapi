@@ -1,34 +1,34 @@
 <template>
-  <div class="people pageContainer">
-    <h1>Star Wars Characters</h1>
+  <div class="planets pageContainer">
+    <h1>Star Wars Planets</h1>
 
-    <Loader v-if="!people.length" />
+    <Loader v-if="!planets.length" />
 
-    <Person :person="person" :key="person.name" v-for="person in people" />
+    <Planet :planet="planet" :key="planet.name" v-for="planet in planets" />
 
     <Pagination
-      v-if="people.length"
-      @prev-click="this.getPeople(prevPage)"
-      @next-click="this.getPeople(nextPage)"
+      v-if="planets.length"
+      @prev-click="this.getPlanets(prevPage)"
+      @next-click="this.getPlanets(nextPage)"
       :page="page"
       :totalPages="totalPages"
     />
-    <toTop v-if="people.length" />
+    <toTop v-if="planets.length" />
   </div>
 </template>
 
 <script>
-import Person from "../components/Person.vue";
+import Planet from "../components/Planet.vue";
 import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader/Loader.vue";
 import Pagination from "../components/Pagination.vue";
 
 export default {
-  name: "People",
+  name: "Planets",
 
   data() {
     return {
-      people: [],
+      planets: [],
       perPage: null,
       page: 1,
       nextPage: "",
@@ -39,25 +39,25 @@ export default {
   },
 
   components: {
-    Person,
+    Planet,
     ToTop,
     Loader,
     Pagination
   },
 
   methods: {
-    async getPeople(reqPage = "") {
+    async getPlanets(reqPage = "") {
       if (this.isLoading || reqPage === null) return;
 
       this.isLoading = true;
 
       const res = await fetch(
-        `${process.env.VUE_APP_API}/people/?page=${reqPage}`
+        `${process.env.VUE_APP_API}/planets/?page=${reqPage}`
       );
 
       const data = await res.json();
 
-      this.people = data.results;
+      this.planets = data.results;
 
       this.perPage = this.perPage ? this.perPage : data.results.length;
 
@@ -85,16 +85,16 @@ export default {
     }
   },
   created() {
-    this.getPeople();
+    this.getPlanets();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.people {
+.planets {
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-image: url("/img/swapi_bg2.png");
+  background-image: url("/img/swapi_bg3.png");
   background-size: contain;
   background-position: top left;
 

@@ -2,7 +2,9 @@
   <nav id="nav">
     <div class="navLinks">
       <router-link to="/">Home</router-link> |
-      <router-link to="/people">People</router-link>
+      <router-link to="/people">People</router-link> |
+      <router-link to="/planets">Planets</router-link> |
+      <router-link to="/films">Films</router-link>
     </div>
     <h1>Star Wars API</h1>
   </nav>
@@ -21,20 +23,30 @@ export default {
   display: flex;
   justify-content: space-between;
 
-  h1 {
-    color: #ffe81a;
+  .navLinks {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      font-weight: bold;
+      margin-right: 20px;
+      font-size: 1.3rem;
+      color: #ffffff;
+      text-decoration: none;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.router-link-exact-active {
+        color: #ffe81a;
+        text-decoration: underline;
+      }
+    }
   }
 
-  a {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #ffffff;
-    text-decoration: none;
-
-    &.router-link-exact-active {
-      color: #ffe81a;
-      text-decoration: underline;
-    }
+  h1 {
+    color: #ffe81a;
   }
 }
 </style>

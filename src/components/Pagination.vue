@@ -45,6 +45,9 @@ export default {
     margin: 0 20px;
     width: 50px;
     color: #fff;
+    background-color: #362f39;
+    padding: 2px;
+    border-radius: 25px;
   }
 
   .prev {

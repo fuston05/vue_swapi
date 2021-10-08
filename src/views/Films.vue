@@ -1,34 +1,34 @@
 <template>
-  <div class="people pageContainer">
-    <h1>Star Wars Characters</h1>
+  <div class="films pageContainer">
+    <h1>Star Wars Films</h1>
 
-    <Loader v-if="!people.length" />
+    <Loader v-if="!films.length" />
 
-    <Person :person="person" :key="person.name" v-for="person in people" />
+    <Film :film="film" :key="film.name" v-for="film in films" />
 
     <Pagination
-      v-if="people.length"
-      @prev-click="this.getPeople(prevPage)"
-      @next-click="this.getPeople(nextPage)"
+      v-if="films.length"
+      @prev-click="this.getFilms(prevPage)"
+      @next-click="this.getFilms(nextPage)"
       :page="page"
       :totalPages="totalPages"
     />
-    <toTop v-if="people.length" />
+    <toTop v-if="films.length" />
   </div>
 </template>
 
 <script>
-import Person from "../components/Person.vue";
+import Film from "../components/Film.vue";
 import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader/Loader.vue";
 import Pagination from "../components/Pagination.vue";
 
 export default {
-  name: "People",
+  name: "Films",
 
   data() {
     return {
-      people: [],
+      films: [],
       perPage: null,
       page: 1,
       nextPage: "",
@@ -39,29 +39,31 @@ export default {
   },
 
   components: {
-    Person,
+    Film,
     ToTop,
     Loader,
     Pagination
   },
 
   methods: {
-    async getPeople(reqPage = "") {
+    async getFilms(reqPage = "") {
       if (this.isLoading || reqPage === null) return;
 
       this.isLoading = true;
 
       const res = await fetch(
-        `${process.env.VUE_APP_API}/people/?page=${reqPage}`
+        `${process.env.VUE_APP_API}/films/?page=${reqPage}`
       );
 
       const data = await res.json();
 
-      this.people = data.results;
+      this.films = data.results;
 
       this.perPage = this.perPage ? this.perPage : data.results.length;
 
       this.page = reqPage ? parseInt(reqPage) : 1;
+
+      console.log("data: ", data.results);
 
       // calc total pages
       this.totalPages = Math.floor((data.count - 1) / this.perPage + 1);
@@ -85,16 +87,16 @@ export default {
     }
   },
   created() {
-    this.getPeople();
+    this.getFilms();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.people {
+.films {
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-image: url("/img/swapi_bg2.png");
+  background-image: url("/img/swapi_bg3.png");
   background-size: contain;
   background-position: top left;
 
