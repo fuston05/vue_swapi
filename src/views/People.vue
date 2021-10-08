@@ -85,18 +85,12 @@ export default {
             .slice(-1)
         : null;
 
-      console.log("next: ", this.nextPage);
-
       this.prevPage = data.previous
         ? data.previous
             .split("/")
             .splice(-1)[0]
             .slice(-1)
         : null;
-
-      console.log("prev: ", this.prevPage);
-
-      console.log("page: ", this.page);
 
       this.isLoading = false;
     }
