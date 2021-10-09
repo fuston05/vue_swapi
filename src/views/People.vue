@@ -9,7 +9,7 @@
     <Pagination
       v-if="resource.length"
       @prev-click="this.setData(pageData.prevPage)"
-      @next-click="this.getPeople(pageData.nextPage)"
+      @next-click="this.setData(pageData.nextPage)"
       :page="pageData.page"
       :totalPages="pageData.totalPages"
     />

@@ -14,7 +14,7 @@
       <li><b>Terrain:</b> {{ planet.terrain }}</li>
     </ul>
 
-    <Loader v-if="isLoading && !films.length" />
+    <Loader v-if="isLoading" />
 
     <ul v-if="!isLoading && films.length">
       <li class="heading"><b>Films:</b></li>
@@ -22,8 +22,6 @@
         {{ film }}
       </li>
     </ul>
-
-    <Loader v-if="isLoading && !residents.length" />
 
     <ul v-if="!isLoading && residents.length">
       <li class="heading"><b>Residents:</b></li>

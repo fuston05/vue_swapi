@@ -14,38 +14,22 @@
       <li v-if="home"><b>Home World:</b> {{ home.name }}</li>
     </ul>
 
-    <Loader v-if="isLoading && !films.length" />
+    <Loader v-if="isLoading" />
 
     <ul v-if="!isLoading && films.length">
       <li class="heading"><b>Films:</b></li>
       <li class="left_indent" :key="film" v-for="film in films">{{ film }}</li>
     </ul>
 
-    <Loader v-if="isLoading && !species.length && !films.length" />
-
     <ul v-if="!isLoading && species.length">
       <li class="heading"><b>Species:</b></li>
       <li class="left_indent" :key="s" v-for="s in species">{{ s }}</li>
     </ul>
 
-    <Loader
-      v-if="isLoading && !vehicles.length && !species.length && !films.length"
-    />
-
     <ul v-if="!isLoading && vehicles.length">
       <li class="heading"><b>Vehicles:</b></li>
       <li class="left_indent" :key="v" v-for="v in vehicles">{{ v }}</li>
     </ul>
-
-    <Loader
-      v-if="
-        isLoading &&
-          !starships.length &&
-          !vehicles.length &&
-          !species.length &&
-          !films.length
-      "
-    />
 
     <ul v-if="!isLoading && starships.length">
       <li class="heading"><b>Starships:</b></li>

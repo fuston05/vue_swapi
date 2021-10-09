@@ -11,7 +11,7 @@
       <li><b>Opening Crawl:</b> {{ film.opening_crawl }}</li>
     </ul>
 
-    <Loader v-if="isLoading && !characters.length" />
+    <Loader v-if="isLoading" />
 
     <ul v-if="!isLoading && characters.length">
       <li class="heading"><b>Characters:</b></li>
@@ -20,8 +20,6 @@
       </li>
     </ul>
 
-    <Loader v-if="isLoading && !planets.length && !characters.length" />
-
     <ul v-if="!isLoading && planets.length">
       <li class="heading"><b>Planets:</b></li>
       <li class="left_indent" :key="planet" v-for="planet in planets">
@@ -29,28 +27,12 @@
       </li>
     </ul>
 
-    <Loader
-      v-if="
-        isLoading && !species.length && !planets.length && !characters.length
-      "
-    />
-
     <ul v-if="!isLoading && species.length">
       <li class="heading"><b>Species:</b></li>
       <li class="left_indent" :key="s" v-for="s in species">
         {{ s }}
       </li>
     </ul>
-
-    <Loader
-      v-if="
-        isLoading &&
-          !starships.length &&
-          !species.length &&
-          !planets.length &&
-          !characters.length
-      "
-    />
 
     <ul v-if="!isLoading && starships.length">
       <li class="heading"><b>starships:</b></li>
