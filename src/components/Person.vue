@@ -1,5 +1,5 @@
 <template>
-  <div class="person">
+  <div class="person card">
     <ul class="details">
       <li class="name">
         {{ person.name }}
@@ -14,21 +14,38 @@
       <li v-if="home"><b>Home World:</b> {{ home.name }}</li>
     </ul>
 
-    <Loader v-if="isLoading" />
-    <ul v-if="!isLoading && films">
+    <Loader v-if="isLoading && !films.length" />
+
+    <ul v-if="!isLoading && films.length">
       <li class="heading"><b>Films:</b></li>
       <li class="left_indent" :key="film" v-for="film in films">{{ film }}</li>
     </ul>
+
+    <Loader v-if="isLoading && !species.length && !films.length" />
 
     <ul v-if="!isLoading && species.length">
       <li class="heading"><b>Species:</b></li>
       <li class="left_indent" :key="s" v-for="s in species">{{ s }}</li>
     </ul>
 
+    <Loader
+      v-if="isLoading && !vehicles.length && !species.length && !films.length"
+    />
+
     <ul v-if="!isLoading && vehicles.length">
       <li class="heading"><b>Vehicles:</b></li>
       <li class="left_indent" :key="v" v-for="v in vehicles">{{ v }}</li>
     </ul>
+
+    <Loader
+      v-if="
+        isLoading &&
+          !starships.length &&
+          !vehicles.length &&
+          !species.length &&
+          !films.length
+      "
+    />
 
     <ul v-if="!isLoading && starships.length">
       <li class="heading"><b>Starships:</b></li>
@@ -151,55 +168,5 @@ export default {
 
 <style scoped lang="scss">
 .person {
-  margin: 2% auto;
-  width: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  padding: 2%;
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-
-  ul {
-    list-style-position: inside;
-    list-style-type: none;
-    margin-bottom: 2%;
-
-    .left_indent {
-      margin-left: 2%;
-    }
-
-    li {
-      margin: 0 0 1% 0;
-      font-size: 1.2rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  ul.details {
-    li.name {
-      padding: 2%;
-      margin: 0 0 5% 0;
-      border-radius: 5px;
-      color: #fff;
-      background-color: black;
-    }
-
-    li.heading {
-      list-style-type: none;
-    }
-  }
-
-  p {
-    margin: 0 0 3% 0;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 </style>

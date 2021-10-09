@@ -24,7 +24,7 @@ export default {
 <style lang="scss" scoped>
 .toTop {
   position: fixed;
-  bottom: 25px;
+  bottom: 90px;
   right: 25px;
   z-index: 5;
   opacity: 0.6;

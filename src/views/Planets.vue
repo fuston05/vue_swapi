@@ -13,6 +13,7 @@
       :page="page"
       :totalPages="totalPages"
     />
+
     <toTop v-if="planets.length" />
   </div>
 </template>
@@ -66,7 +67,7 @@ export default {
       // calc total pages
       this.totalPages = Math.floor((data.count - 1) / this.perPage + 1);
 
-      // set up for page calculation
+      // page calculation
       this.nextPage = data.next
         ? data.next
             .split("/")
@@ -84,6 +85,7 @@ export default {
       this.isLoading = false;
     }
   },
+
   created() {
     this.getPlanets();
   }
@@ -92,14 +94,6 @@ export default {
 
 <style lang="scss" scoped>
 .planets {
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-image: url("/img/swapi_bg3.png");
-  background-size: contain;
-  background-position: top left;
-
-  h1 {
-    color: #ffe81a;
-  }
 }
 </style>

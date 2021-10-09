@@ -1,5 +1,5 @@
 <template>
-  <div class="planet">
+  <div class="planet card">
     <ul class="details">
       <li class="name">
         {{ planet.name }}
@@ -14,7 +14,7 @@
       <li><b>Terrain:</b> {{ planet.terrain }}</li>
     </ul>
 
-    <Loader v-if="isLoading" />
+    <Loader v-if="isLoading && !films.length" />
 
     <ul v-if="!isLoading && films.length">
       <li class="heading"><b>Films:</b></li>
@@ -22,6 +22,8 @@
         {{ film }}
       </li>
     </ul>
+
+    <Loader v-if="isLoading && !residents.length" />
 
     <ul v-if="!isLoading && residents.length">
       <li class="heading"><b>Residents:</b></li>
@@ -95,55 +97,5 @@ export default {
 
 <style scoped lang="scss">
 .planet {
-  margin: 2% auto;
-  width: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  padding: 2%;
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-
-  ul {
-    list-style-position: inside;
-    list-style-type: none;
-    margin-bottom: 2%;
-
-    .left_indent {
-      margin-left: 2%;
-    }
-
-    li {
-      margin: 0 0 1% 0;
-      font-size: 1.2rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  ul.details {
-    li.name {
-      padding: 2%;
-      margin: 0 0 5% 0;
-      border-radius: 5px;
-      color: #fff;
-      background-color: black;
-    }
-
-    li.heading {
-      list-style-type: none;
-    }
-  }
-
-  p {
-    margin: 0 0 3% 0;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
 </style>
