@@ -7,16 +7,18 @@ export async function fetchData(reqPage, pageData, resName) {
 
   const data = await res.json();
 
-  let _resource = data.results;
+  const _resource = data.results;
 
-  let _perPage = pageData.perPage ? pageData.perPage : data.results.length;
+  // items per page
+  const _perPage = pageData.perPage ? pageData.perPage : data.results.length;
 
+  // current page
   let _page = reqPage ? parseInt(reqPage) : 1;
 
   // calc total pages
-  let _totalPages = Math.floor((data.count - 1) / pageData.perPage + 1);
+  let _totalPages = Math.floor((data.count - 1) / _perPage + 1);
 
-  // page calculation
+  // next/prev page calculation
   let _nextPage = data.next
     ? data.next
         .split("/")

@@ -2,19 +2,19 @@
   <div class="people pageContainer">
     <h1>Star Wars Characters</h1>
 
-    <Loader v-if="!people.length" />
+    <Loader v-if="!resource.length" />
 
-    <Person :person="person" :key="person.name" v-for="person in people" />
+    <Person :person="r" :key="r.name" v-for="r in resource" />
 
     <Pagination
-      v-if="people.length"
-      @prev-click="this.getPeople(prevPage)"
-      @next-click="this.getPeople(nextPage)"
-      :page="page"
-      :totalPages="totalPages"
+      v-if="resource.length"
+      @prev-click="this.setData(pageData.prevPage)"
+      @next-click="this.getPeople(pageData.nextPage)"
+      :page="pageData.page"
+      :totalPages="pageData.totalPages"
     />
 
-    <toTop v-if="people.length" />
+    <toTop v-if="resource.length" />
   </div>
 </template>
 
@@ -24,17 +24,22 @@ import ToTop from "../components/ToTop.vue";
 import Loader from "../components/Loader/Loader.vue";
 import Pagination from "../components/Pagination.vue";
 
+// UTIL
+import { fetchData } from "../utils";
+
 export default {
   name: "People",
 
   data() {
     return {
-      people: [],
-      perPage: null,
-      page: 1,
-      nextPage: "",
-      prevPage: "",
-      totalPages: 0,
+      pageData: {
+        perPage: null,
+        page: 1,
+        nextPage: "",
+        prevPage: "",
+        totalPages: 0
+      },
+      resource: [],
       isLoading: false
     };
   },
@@ -47,47 +52,31 @@ export default {
   },
 
   methods: {
-    async getPeople(reqPage = "") {
-      if (this.isLoading || reqPage === null) return;
-
+    async setData(reqPage = 1) {
       this.isLoading = true;
 
-      const res = await fetch(
-        `${process.env.VUE_APP_API}/people/?page=${reqPage}`
-      );
+      const [
+        _perPage,
+        _page,
+        _totalPages,
+        _nextPage,
+        _prevPage,
+        _resource
+      ] = await fetchData(reqPage, this.pageData, "people");
 
-      const data = await res.json();
-
-      this.people = data.results;
-
-      this.perPage = this.perPage ? this.perPage : data.results.length;
-
-      this.page = reqPage ? parseInt(reqPage) : 1;
-
-      // calc total pages
-      this.totalPages = Math.floor((data.count - 1) / this.perPage + 1);
-
-      // page calculation
-      this.nextPage = data.next
-        ? data.next
-            .split("/")
-            .splice(-1)[0]
-            .slice(-1)
-        : null;
-
-      this.prevPage = data.previous
-        ? data.previous
-            .split("/")
-            .splice(-1)[0]
-            .slice(-1)
-        : null;
+      this.pageData.perPage = _perPage;
+      this.pageData.page = _page;
+      this.pageData.totalPages = _totalPages;
+      this.pageData.nextPage = _nextPage;
+      this.pageData.prevPage = _prevPage;
+      this.resource = _resource;
 
       this.isLoading = false;
     }
   },
 
   created() {
-    this.getPeople();
+    this.setData();
   }
 };
 </script>
