@@ -35,6 +35,9 @@
 <script>
 import Loader from "../components/Loader/Loader.vue";
 
+// UTILS
+import { getData } from "../utils";
+
 export default {
   name: "Planet",
   props: {
@@ -56,44 +59,17 @@ export default {
   },
 
   methods: {
-    async getFilms(filmsArr) {
-      let numFilms = filmsArr.length;
-
-      for (let i = 0; i < numFilms; i++) {
-        let filmRes = await fetch(filmsArr[i]);
-
-        let filmData = await filmRes.json();
-        this.films.push(filmData.title);
-      }
-    },
-
-    async getResidents(residentsArr) {
-      let numResidents = residentsArr.length;
-
-      for (let i = 0; i < numResidents; i++) {
-        let residentsRes = await fetch(residentsArr[i]);
-
-        let residentsData = await residentsRes.json();
-        this.residents.push(residentsData.name);
-      }
-    },
-
-    async getPlanetData(filmsArr, residentsArr) {
+    async getPlanetData() {
       this.isLoading = true;
 
-      await this.getFilms(filmsArr);
-      await this.getResidents(residentsArr);
+      this.films = await getData(this.planet.films);
+      this.residents = await getData(this.planet.residents);
 
       this.isLoading = false;
     }
   },
   created() {
-    this.getPlanetData(this.planet.films, this.planet.residents);
+    this.getPlanetData();
   }
 };
 </script>
-
-<style scoped lang="scss">
-.planet {
-}
-</style>
