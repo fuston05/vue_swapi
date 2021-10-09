@@ -43,6 +43,9 @@
 <script>
 import Loader from "../components/Loader/Loader.vue";
 
+// UTILS
+import { getData } from "../utils";
+
 export default {
   name: "Person",
   props: {
@@ -67,85 +70,20 @@ export default {
   },
 
   methods: {
-    async getHome(homeUrl) {
-      const homeRes = await fetch(homeUrl);
-
-      const homeData = await homeRes.json();
-
-      this.home = homeData;
-    },
-
-    async getFilms(filmsArr) {
-      let numFilms = filmsArr.length;
-
-      for (let i = 0; i < numFilms; i++) {
-        let filmRes = await fetch(filmsArr[i]);
-
-        let filmData = await filmRes.json();
-        this.films.push(filmData.title);
-      }
-    },
-
-    async getSpecies(speciesArr) {
-      let numSpecies = speciesArr.length;
-
-      for (let i = 0; i < numSpecies; i++) {
-        let speciesRes = await fetch(speciesArr[i]);
-
-        let speciesData = await speciesRes.json();
-        this.species.push(speciesData.name);
-      }
-    },
-
-    async getVehicles(vehiclesArr) {
-      let numVehicles = vehiclesArr.length;
-
-      for (let i = 0; i < numVehicles; i++) {
-        let vehiclesRes = await fetch(vehiclesArr[i]);
-
-        let vehiclesData = await vehiclesRes.json();
-        this.vehicles.push(vehiclesData.name);
-      }
-    },
-
-    async getStarships(starshipsArr) {
-      let numstarships = starshipsArr.length;
-
-      for (let i = 0; i < numstarships; i++) {
-        let starshipsRes = await fetch(starshipsArr[i]);
-
-        let starshipsData = await starshipsRes.json();
-        this.starships.push(starshipsData.name);
-      }
-    },
-
-    async getPersonData(
-      homeUrl,
-      filmsArr,
-      speciesArr,
-      vehiclesArr,
-      starshipsArr
-    ) {
+    async getPersonData() {
       this.isLoading = true;
 
-      await this.getHome(homeUrl);
-      await this.getFilms(filmsArr);
-      await this.getSpecies(speciesArr);
-      await this.getVehicles(vehiclesArr);
-      await this.getStarships(starshipsArr);
+      this.films = await getData(this.person.films);
+      this.species = await getData(this.person.species);
+      this.vehicles = await getData(this.person.vehicles);
+      this.starships = await getData(this.person.starships);
 
       this.isLoading = false;
     }
   },
 
   created() {
-    this.getPersonData(
-      this.person.homeworld,
-      this.person.films,
-      this.person.species,
-      this.person.vehicles,
-      this.person.starships
-    );
+    this.getPersonData();
   }
 };
 </script>

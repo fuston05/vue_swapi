@@ -7,6 +7,8 @@ export async function fetchData(reqPage, pageData, resName) {
 
   const data = await res.json();
 
+  console.log({ data });
+
   const _resource = data.results;
 
   // items per page
@@ -45,7 +47,8 @@ export async function getData(arr) {
 
     let data = await res.json();
 
-    resArr.push(data.name);
+    // some have a 'title', some have 'name'
+    data.name ? resArr.push(data.name) : resArr.push(data.title);
   }
   return resArr;
 }
