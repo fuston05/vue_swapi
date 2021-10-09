@@ -83,6 +83,6 @@ export default {
 
 <style lang="scss" scoped>
 .species {
-  background-image: url("/img/swapi_bg3.png");
+  background-image: url("/img/swapi_bg5.png");
 }
 </style>

@@ -37,7 +37,7 @@ export default {
     padding: 2%;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: top left;
 
     h1 {

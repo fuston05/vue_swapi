@@ -80,3 +80,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+#app .singleSpecies {
+  width: 60%;
+}
+</style>
