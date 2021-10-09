@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/people">People</router-link> |
       <router-link to="/planets">Planets</router-link> |
-      <router-link to="/films">Films</router-link>
+      <router-link to="/films">Films</router-link> |
+      <router-link to="/species">Species</router-link>
     </div>
     <h1>Star Wars API</h1>
   </nav>
@@ -12,7 +13,7 @@
 
 <script>
 export default {
-  name: "Nav"
+  name: "Species"
 };
 </script>
 

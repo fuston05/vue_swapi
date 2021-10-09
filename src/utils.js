@@ -46,7 +46,6 @@ export async function getData(arr) {
     let res = await fetch(arr[i]);
 
     let data = await res.json();
-
     // some have a 'title', some have 'name'
     data.name ? resArr.push(data.name) : resArr.push(data.title);
   }
