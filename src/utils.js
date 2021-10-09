@@ -35,3 +35,17 @@ export async function fetchData(reqPage, pageData, resName) {
 
   return [_perPage, _page, _totalPages, _nextPage, _prevPage, _resource];
 }
+
+export async function getData(arr) {
+  let numItems = arr.length;
+  let resArr = [];
+
+  for (let i = 0; i < numItems; i++) {
+    let res = await fetch(arr[i]);
+
+    let data = await res.json();
+
+    resArr.push(data.name);
+  }
+  return resArr;
+}

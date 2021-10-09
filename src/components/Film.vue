@@ -46,6 +46,9 @@
 <script>
 import Loader from "../components/Loader/Loader.vue";
 
+// UTILS
+import { getData } from "../utils";
+
 export default {
   name: "Film",
   props: {
@@ -68,55 +71,18 @@ export default {
     };
   },
   methods: {
-    async getCharacters(charactersArr) {
-      let numCharacters = charactersArr.length;
-
-      for (let i = 0; i < numCharacters; i++) {
-        let charactersRes = await fetch(charactersArr[i]);
-
-        let charactersData = await charactersRes.json();
-        this.characters.push(charactersData.name);
-      }
-    },
-
-    async getPlanets(planetsArr) {
-      let numPlanets = planetsArr.length;
-
-      for (let i = 0; i < numPlanets; i++) {
-        let planetsRes = await fetch(planetsArr[i]);
-
-        let planetsData = await planetsRes.json();
-        this.planets.push(planetsData.name);
-      }
-    },
-
-    async getSpecies(speciesArr) {
-      let numSpecies = speciesArr.length;
-
-      for (let i = 0; i < numSpecies; i++) {
-        let speciesRes = await fetch(speciesArr[i]);
-
-        let speciesData = await speciesRes.json();
-        this.species.push(speciesData.name);
-      }
-    },
-
-    async getfilmData(charactersArr, planetsArr, speciesArr) {
+    async getfilmData() {
       this.isLoading = true;
 
-      await this.getCharacters(charactersArr);
-      await this.getPlanets(planetsArr);
-      await this.getSpecies(speciesArr);
+      this.characters = await getData(this.film.characters);
+      this.planets = await getData(this.film.planets);
+      this.species = await getData(this.film.species);
 
       this.isLoading = false;
     }
   },
   created() {
-    this.getfilmData(
-      this.film.characters,
-      this.film.planets,
-      this.film.species
-    );
+    this.getfilmData();
   }
 };
 </script>
