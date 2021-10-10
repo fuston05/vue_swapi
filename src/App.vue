@@ -84,6 +84,7 @@ export default {
         border-radius: 5px;
         color: #fff;
         background-color: black;
+        font-size: 1.6rem;
       }
 
       li.heading {

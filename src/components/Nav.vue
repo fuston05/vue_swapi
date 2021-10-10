@@ -48,6 +48,11 @@ export default {
       color: #ffffff;
       text-decoration: none;
 
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
       &:last-child {
         margin-right: 0;
       }
