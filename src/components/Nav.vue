@@ -4,7 +4,8 @@
       <router-link to="/people">People</router-link> |
       <router-link to="/planets">Planets</router-link> |
       <router-link to="/films">Films</router-link> |
-      <router-link to="/species">Species</router-link>
+      <router-link to="/species">Species</router-link> |
+      <router-link to="/starships">Starships</router-link>
     </div>
     <a class="homeLink" href="/"><h1>Star Wars API</h1></a>
   </nav>
