@@ -3,6 +3,7 @@
     <h1>Star Wars Starships</h1>
 
     <Loader v-if="!resource.length" />
+
     <Starship :starship="r" :key="r.name" v-for="r in resource" />
 
     <Pagination
@@ -47,8 +48,7 @@ export default {
     Starship,
     ToTop,
     Loader,
-    Pagination,
-    Starship
+    Pagination
   },
 
   methods: {
