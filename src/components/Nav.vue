@@ -1,13 +1,12 @@
 <template>
   <nav id="nav">
     <div class="navLinks">
-      <router-link to="/">Home</router-link> |
       <router-link to="/people">People</router-link> |
       <router-link to="/planets">Planets</router-link> |
       <router-link to="/films">Films</router-link> |
       <router-link to="/species">Species</router-link>
     </div>
-    <h1>Star Wars API</h1>
+    <a class="homeLink" href="/"><h1>Star Wars API</h1></a>
   </nav>
 </template>
 
@@ -23,6 +22,15 @@ export default {
   border-bottom: 1px solid green;
   display: flex;
   justify-content: space-between;
+
+  a.homeLink {
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
 
   .navLinks {
     display: flex;
