@@ -35,7 +35,7 @@
     </ul>
 
     <ul v-if="!isLoading && starships.length">
-      <li class="heading"><b>starships:</b></li>
+      <li class="heading"><b>Starships:</b></li>
       <li class="left_indent" :key="ship" v-for="ship in starships">
         {{ ship }}
       </li>
@@ -71,17 +71,20 @@ export default {
     };
   },
   methods: {
+    setResource() {},
+
     async getfilmData() {
       this.isLoading = true;
 
       this.characters = await getData(this.film.characters);
       this.planets = await getData(this.film.planets);
       this.species = await getData(this.film.species);
+      this.starships = await getData(this.film.starships);
 
       this.isLoading = false;
     }
   },
-  
+
   created() {
     this.getfilmData();
   }
