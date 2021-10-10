@@ -1,6 +1,6 @@
 <template>
   <div class="planets pageContainer">
-    <h1>Star Wars Planets</h1>
+    <h1>Planets</h1>
 
     <Loader v-if="!resource.length" />
 

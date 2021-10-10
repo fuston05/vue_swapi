@@ -1,6 +1,6 @@
 <template>
   <div class="starships pageContainer">
-    <h1>Star Wars Starships</h1>
+    <h1>Starships</h1>
 
     <Loader v-if="!resource.length" />
 
