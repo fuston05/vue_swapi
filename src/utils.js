@@ -2,8 +2,8 @@ export async function fetchData(reqPage, pageData, resName) {
   if (reqPage === null) return;
   let data = {};
 
-  if (localStorage.getItem(resName)) {
-    data = JSON.parse(localStorage.getItem(resName));
+  if (sessionStorage.getItem(resName)) {
+    data = JSON.parse(sessionStorage.getItem(resName));
   } else {
     const res = await fetch(
       `${process.env.VUE_APP_API}/${resName}/?page=${reqPage}`
@@ -11,10 +11,10 @@ export async function fetchData(reqPage, pageData, resName) {
 
     data = await res.json();
 
-    // add to localstorage
-    localStorage.setItem(resName, JSON.stringify(data));
+    // add to sessionStorage
+    data.count && sessionStorage.setItem(resName, JSON.stringify(data));
   }
-  console.log("data: ", data);
+
   const _resource = data.results;
 
   // items per page

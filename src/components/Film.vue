@@ -40,6 +40,13 @@
         {{ ship }}
       </li>
     </ul>
+
+    <ul v-if="!isLoading && vehicles.length">
+      <li class="heading"><b>Vehicles:</b></li>
+      <li class="left_indent" :key="vehicle" v-for="vehicle in vehicles">
+        {{ vehicle }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -67,19 +74,19 @@ export default {
       characters: [],
       planets: [],
       species: [],
-      starships: []
+      starships: [],
+      vehicles: []
     };
   },
   methods: {
-    setResource() {},
-
     async getfilmData() {
       this.isLoading = true;
 
-      this.characters = await getData(this.film.characters);
-      this.planets = await getData(this.film.planets);
-      this.species = await getData(this.film.species);
-      this.starships = await getData(this.film.starships);
+      this.characters = await getData(this.film.characters, "film_characters");
+      this.planets = await getData(this.film.planets, "film_planets");
+      this.species = await getData(this.film.species, "film_species");
+      this.starships = await getData(this.film.starships, "film_starships");
+      this.vehicles = await getData(this.film.vehicles, "film_vehicles");
 
       this.isLoading = false;
     }
