@@ -1,7 +1,9 @@
 <template>
   <div class="introduction pageContainer">
     <p>
-      Please make a selection above to view Star Wars Characters.
+      All the Star Wars information you could ever want all in one place!
+      Information provided by the
+      <a href="https://swapi.dev/" target="_blank">Star Wars API</a>
     </p>
   </div>
 </template>
@@ -16,14 +18,23 @@ export default {
 <style scoped lang="scss">
 .introduction {
   background-image: url("/img/swapi_bg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
-  p {
+  p,
+  a {
     font-size: 1.8rem;
     color: #cff4cf;
     text-shadow: 1px 1px 1px #333;
+  }
+
+  p {
+    margin-top: 5%;
+    border-radius: 5px;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  a:hover {
+    opacity: 0.8;
   }
 }
 </style>

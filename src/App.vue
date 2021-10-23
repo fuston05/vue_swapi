@@ -14,7 +14,7 @@ export default {
   components: {
     Nav,
     Footer
-  },
+  }
 };
 </script>
 
@@ -38,7 +38,7 @@ export default {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top left;
+    background-position: center;
 
     h1 {
       color: #ffe81a;

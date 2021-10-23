@@ -10,8 +10,11 @@
       <li><b>Eye Colors:</b> {{ species.eye_colors }}</li>
       <li><b>Hair Colors:</b> {{ species.hair_colors }}</li>
       <li><b>Skin Colors:</b> {{ species.skin_colors }}</li>
-      <li><b>Average Height:</b> {{ species.average_height }}</li>
-      <li><b>Average Lifespan:</b> {{ species.average_lifespan }}</li>
+      <li>
+        <b>Average Height:</b>
+        {{ (species.average_height / 2.54).toFixed(1) }} in
+      </li>
+      <li><b>Average Lifespan:</b> {{ species.average_lifespan }} years</li>
 
       <li v-if="!isLoading && homeWorld">
         <b>Home World:</b> {{ homeWorld[0] }}

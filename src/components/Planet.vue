@@ -4,13 +4,19 @@
       <li class="name">
         {{ planet.name }}
       </li>
-      <li><b>Diameter:</b> {{ planet.diameter }}</li>
+      <li>
+        <b>Diameter:</b>
+        {{ (planet.diameter * 1000).toLocaleString("en-US") }} m
+      </li>
       <li><b>Gravity:</b> {{ planet.gravity }}</li>
-      <li><b>Orbital Period:</b> {{ planet.orbital_period }}</li>
-      <li><b>Rotation Period:</b> {{ planet.rotation_period }}</li>
-      <li><b>Population:</b> {{ planet.population }}</li>
+      <li><b>Orbital Period:</b> {{ planet.orbital_period }} days</li>
+      <li><b>Rotation Period:</b> {{ planet.rotation_period }} hours</li>
+      <li>
+        <b>Population:</b>
+        {{ parseInt(planet.population).toLocaleString("en-US") }}
+      </li>
       <li><b>Climate:</b> {{ planet.climate }}</li>
-      <li><b>Surface Water:</b> {{ planet.surface_water }}</li>
+      <li><b>Surface Water:</b> {{ planet.surface_water }}&#37;</li>
       <li><b>Terrain:</b> {{ planet.terrain }}</li>
     </ul>
 

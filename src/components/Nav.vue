@@ -1,6 +1,6 @@
 <template>
   <nav id="nav">
-    <a class="homeLink" href="/"><h1>Star Wars API</h1></a>
+    <a class="homeLink" href="/"><h1>Star Wars</h1></a>
     <div class="navLinks">
       <router-link to="/people">People</router-link> |
       <router-link to="/planets">Planets</router-link> |

@@ -8,10 +8,10 @@
       <li><b>Hair Color:</b> {{ person.hair_color }}</li>
       <li><b>Skin Color:</b> {{ person.skin_color }}</li>
       <li><b>Gender:</b> {{ person.gender }}</li>
-      <li><b>Height:</b> {{ person.height }}</li>
-      <li><b>Weight:</b> {{ person.mass }}</li>
+      <li><b>Height:</b> {{ (person.height / 2.54).toFixed(1) }} in</li>
+      <li><b>Weight:</b> {{ person.mass }} kg</li>
       <li><b>Birth Year:</b> {{ person.birth_year }}</li>
-      <li v-if="home"><b>Home World:</b> {{ home.name }}</li>
+      <li v-if="home"><b>Home World:</b> {{ home[0] }}</li>
     </ul>
 
     <Loader v-if="isLoading" />
@@ -60,7 +60,7 @@ export default {
 
   data() {
     return {
-      home: "",
+      home: [],
       films: [],
       species: [],
       vehicles: [],
@@ -77,6 +77,7 @@ export default {
       this.species = await getData(this.person.species);
       this.vehicles = await getData(this.person.vehicles);
       this.starships = await getData(this.person.starships);
+      this.home = await getData([this.person.homeworld]);
 
       this.isLoading = false;
     }

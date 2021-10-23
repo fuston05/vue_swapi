@@ -5,11 +5,20 @@
       <li><b>Class:</b> {{ starship.starship_class }}</li>
       <li><b>Model:</b> {{ starship.model }}</li>
       <li><b>Manufacturer:</b> {{ starship.manufacturer }}</li>
-      <li><b>Cost in Credits:</b> {{ starship.cost_in_credits }} gc</li>
-      <li><b>Length:</b> {{ starship.length }} m</li>
-      <li><b>Cargo Capacity:</b> {{ starship.cargo_capacity }} kg</li>
       <li>
-        <b>Max Atmosphering Speed:</b> {{ starship.max_atmosphering_speed }}
+        <b>Cost:</b>
+        {{ parseInt(starship.cost_in_credits).toLocaleString("en-US") }} gc
+      </li>
+      <li>
+        <b>Length:</b> {{ parseInt(starship.length).toLocaleString("en-US") }} m
+      </li>
+      <li>
+        <b>Cargo Capacity:</b>
+        {{ parseInt(starship.cargo_capacity).toLocaleString("en-US") }} kg
+      </li>
+      <li v-if="starship.max_atmosphering_speed !== 'n/a'">
+        <b>Max Atmosphering Speed:</b>
+        {{ parseInt(starship.max_atmosphering_speed).toLocaleString("en-US") }}
       </li>
       <li><b>Hyperdrive Rating:</b> {{ starship.hyperdrive_rating }}</li>
       <li><b>MGLT:</b> {{ starship.MGLT }}</li>
