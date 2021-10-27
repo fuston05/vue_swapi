@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "Species"
+  name: "Nav"
 };
 </script>
 

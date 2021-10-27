@@ -1,11 +1,13 @@
 <template>
-  <Nav />
+  <Nav v-if="!isMobile" />
+  <MobileNav v-if="isMobile" />
   <router-view />
   <Footer />
 </template>
 
 <script>
 import Nav from "./components/Nav.vue";
+import MobileNav from "./components/MobileNav.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
@@ -13,7 +15,31 @@ export default {
 
   components: {
     Nav,
+    MobileNav,
     Footer
+  },
+
+  data() {
+    return {
+      isMobile: false
+    };
+  },
+
+  methods: {
+    checkIsMobile() {
+      console.log("check mobile");
+      window.innerWidth <= 600
+        ? (this.isMobile = true)
+        : (this.isMobile = false);
+    }
+  },
+
+  created() {
+    this.checkIsMobile();
+    window.addEventListener("resize", this.checkIsMobile);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.checkIsMobile);
   }
 };
 </script>
