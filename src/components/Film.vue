@@ -97,9 +97,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-#app .film {
-  width: 80%;
-}
-</style>

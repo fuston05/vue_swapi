@@ -74,9 +74,13 @@ export default {
       this.isLoading = false;
     }
   },
+  emits: ["close-mobile-nav"],
 
   created() {
     this.setData();
+  },
+  mounted() {
+    this.$emit("close-mobile-nav");
   }
 };
 </script>

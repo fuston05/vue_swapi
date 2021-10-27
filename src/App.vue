@@ -1,7 +1,7 @@
 <template>
   <Nav v-if="!isMobile" />
-  <MobileNav v-if="isMobile" />
-  <router-view />
+  <MobileNav v-on:toggle-nav="toggleNav" v-if="isMobile" />
+  <router-view v-on:close-mobile-nav="closeMobileNav" />
   <Footer />
 </template>
 
@@ -27,10 +27,30 @@ export default {
 
   methods: {
     checkIsMobile() {
-      console.log("check mobile");
       window.innerWidth <= 600
         ? (this.isMobile = true)
         : (this.isMobile = false);
+    },
+
+    closeMobileNav() {
+      const navEle = document.querySelector(".navLinks");
+
+      if (navEle.classList.contains("expand")) {
+        navEle.classList.remove("expand");
+        navEle.classList.add("collapse");
+      }
+    },
+
+    toggleNav() {
+      const navEle = document.querySelector(".navLinks");
+
+      if (navEle.classList.contains("expand")) {
+        navEle.classList.remove("expand");
+        navEle.classList.add("collapse");
+      } else {
+        navEle.classList.remove("collapse");
+        navEle.classList.add("expand");
+      }
     }
   },
 

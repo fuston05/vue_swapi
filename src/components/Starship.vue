@@ -86,9 +86,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-#app .starship {
-  width: 60%;
-}
-</style>

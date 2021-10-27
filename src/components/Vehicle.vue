@@ -77,9 +77,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-#app .vehicle {
-  width: 60%;
-}
-</style>

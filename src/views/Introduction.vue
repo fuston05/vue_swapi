@@ -10,7 +10,13 @@
 
 <script>
 export default {
-  name: "Introduction"
+  name: "Introduction",
+
+  emits: ["close-mobile-nav"],
+
+  mounted() {
+    this.$emit("close-mobile-nav");
+  }
 };
 </script>
 

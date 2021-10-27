@@ -1,13 +1,13 @@
 <template>
   <nav id="mobile_nav">
     <div class="top">
-      <a class="homeLink" href="/"><h1>Star Wars</h1></a>
+      <router-link class="homeLink" to="/"><h1>Star Wars</h1></router-link>
 
       <img
         class="mobile_nav_icon"
         src="/img/icons/mobile_nav_icon.png"
         alt="mobile navigation menu"
-        v-on:click="toggleNav"
+        v-on:click="$emit('toggle-nav')"
       />
     </div>
 
@@ -26,25 +26,7 @@
 export default {
   name: "mobileNav",
 
-  data() {
-    return {
-      navHidden: true
-    };
-  },
-
-  methods: {
-    toggleNav() {
-      const navEle = this.$refs.navLinks;
-
-      if (navEle.classList.contains("expand")) {
-        navEle.classList.remove("expand");
-        navEle.classList.add("collapse");
-      } else {
-        navEle.classList.remove("collapse");
-        navEle.classList.add("expand");
-      }
-    }
-  }
+  emits: ["toggle-nav"]
 };
 </script>
 
@@ -79,12 +61,12 @@ export default {
 
   .collapse {
     max-height: 0;
-    transition: max-height 1s ease-out;
+    transition: max-height 0.8s ease-out;
   }
 
   .expand {
     max-height: 500px;
-    transition: max-height 1s ease-in;
+    transition: max-height 0.8s ease-in;
   }
 
   .navLinks {
