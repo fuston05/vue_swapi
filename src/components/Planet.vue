@@ -1,7 +1,7 @@
 <template>
   <div class="planet card">
-    <ul class="details">
-      <li class="name">
+    <ul class="mainContent">
+      <li class="title">
         {{ planet.name }}
       </li>
       <li>

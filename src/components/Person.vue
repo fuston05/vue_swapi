@@ -1,7 +1,7 @@
 <template>
   <div class="person card">
-    <ul class="details">
-      <li class="name">
+    <ul class="mainContent">
+      <li class="title">
         {{ person.name }}
       </li>
       <li><b>Eye Color:</b> {{ person.eye_color }}</li>

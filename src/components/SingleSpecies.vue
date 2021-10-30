@@ -1,7 +1,7 @@
 <template>
   <div class="singleSpecies card">
-    <ul class="details">
-      <li class="name">
+    <ul class="mainContent">
+      <li class="title">
         {{ species.name }}
       </li>
       <li><b>Designation:</b> {{ species.designation }}</li>

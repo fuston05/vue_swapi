@@ -86,6 +86,10 @@ export default {
     background-size: cover;
     background-position: center;
 
+    @media (max-width: 600px) {
+      padding: 1%;
+    }
+
     h1 {
       color: #ffe81a;
       text-shadow: 1px 1px 3px #333;
@@ -99,6 +103,10 @@ export default {
     background-color: rgba(255, 255, 255, 0.83);
     border-radius: 5px;
     padding: 2%;
+
+    @media screen and (max-width: 800px) {
+      width: 80%;
+    }
 
     @media screen and (max-width: 600px) {
       width: 100%;
@@ -123,8 +131,8 @@ export default {
       }
     }
 
-    ul.details {
-      li.name {
+    ul.mainContent {
+      li.title {
         padding: 2%;
         margin: 0 0 5% 0;
         border-radius: 5px;
@@ -132,10 +140,21 @@ export default {
         background-color: black;
         font-size: 1.6rem;
       }
+    }
 
-      li.heading {
-        list-style-type: none;
+    .itemHeading {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 0 0 1% 0;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
       }
+    }
+
+    ul {
+      overflow: hidden;
     }
   }
 }

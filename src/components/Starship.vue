@@ -1,7 +1,7 @@
 <template>
   <div class="starship card">
-    <ul class="details">
-      <li class="name">{{ starship.name }}</li>
+    <ul class="mainContent">
+      <li class="title">{{ starship.name }}</li>
       <li><b>Class:</b> {{ starship.starship_class }}</li>
       <li><b>Model:</b> {{ starship.model }}</li>
       <li><b>Manufacturer:</b> {{ starship.manufacturer }}</li>

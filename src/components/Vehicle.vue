@@ -1,7 +1,7 @@
 <template>
   <div class="vehicle card">
-    <ul class="details">
-      <li class="name">{{ vehicle.name }}</li>
+    <ul class="mainContent">
+      <li class="title">{{ vehicle.name }}</li>
       <li><b>Class:</b> {{ vehicle.vehicle_class }}</li>
       <li><b>Model:</b> {{ vehicle.model }}</li>
       <li><b>Manufacturer:</b> {{ vehicle.manufacturer }}</li>

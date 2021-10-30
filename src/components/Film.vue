@@ -1,24 +1,37 @@
 <template>
   <div class="film card">
-    <ul class="details">
-      <li class="name">
+    <ul class="mainContent">
+      <li class="title">
         {{ film.title }}
       </li>
-      <li><b>Release Date:</b> {{ film.release_date }}</li>
-      <li><b>Director:</b> {{ film.director }}</li>
-      <li><b>Producer:</b> {{ film.producer }}</li>
-      <li><b>Episode:</b> {{ film.episode_id }}</li>
-      <li><b>Opening Crawl:</b> {{ film.opening_crawl }}</li>
+      <li>
+        <span class="itemHeading">Release Date:</span> {{ film.release_date }}
+      </li>
+      <li><span class="itemHeading">Director:</span> {{ film.director }}</li>
+      <li><span class="itemHeading">Producer:</span> {{ film.producer }}</li>
+      <li><span class="itemHeading">Episode:</span> {{ film.episode_id }}</li>
+      <li>
+        <span class="itemHeading">Opening Crawl:</span> {{ film.opening_crawl }}
+      </li>
     </ul>
 
     <Loader v-if="isLoading" />
 
-    <ul v-if="!isLoading && characters.length">
-      <li class="heading"><b>Characters:</b></li>
-      <li class="left_indent" :key="character" v-for="character in characters">
-        {{ character }}
-      </li>
-    </ul>
+    <div v-if="!isLoading && characters.length">
+      <div class="itemHeading">
+        <span>Characters:</span>
+      </div>
+
+      <ul class="hideContent characters">
+        <li
+          class="left_indent"
+          :key="character"
+          v-for="character in characters"
+        >
+          {{ character }}
+        </li>
+      </ul>
+    </div>
 
     <ul v-if="!isLoading && planets.length">
       <li class="heading"><b>Planets:</b></li>
@@ -58,11 +71,8 @@ import { getData } from "../utils";
 
 export default {
   name: "Film",
-  props: {
-    film: {
-      type: Object
-    }
-  },
+
+  props: ["film"],
 
   components: {
     Loader
@@ -78,6 +88,7 @@ export default {
       vehicles: []
     };
   },
+
   methods: {
     async getfilmData() {
       this.isLoading = true;
