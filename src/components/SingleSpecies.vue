@@ -12,9 +12,23 @@
       <li><b>Skin Colors:</b> {{ species.skin_colors }}</li>
       <li>
         <b>Average Height:</b>
-        {{ (species.average_height / 2.54).toFixed(1) }} in
+        {{
+          species.average_height === "unknown"
+            ? "unknown"
+            : species.average_height === "n/a"
+            ? "n/a"
+            : (species.average_height / 2.54).toFixed(1) + " in"
+        }}
       </li>
-      <li><b>Average Lifespan:</b> {{ species.average_lifespan }} years</li>
+      <li>
+        <b>Average Lifespan:</b>
+        {{
+          species.average_lifespan === "unknown"
+            ? "unknown"
+            : parseInt(species.average_lifespan).toLocaleString("en-US") +
+              " years"
+        }}
+      </li>
 
       <li v-if="!isLoading && homeWorld">
         <b>Home World:</b> {{ homeWorld[0] }}
