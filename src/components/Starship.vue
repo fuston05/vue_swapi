@@ -7,24 +7,52 @@
       <li><b>Manufacturer:</b> {{ starship.manufacturer }}</li>
       <li>
         <b>Cost:</b>
-        {{ parseInt(starship.cost_in_credits).toLocaleString("en-US") }} gc
+        {{
+          starship.cost_in_credits === "unknown"
+            ? "unknown"
+            : parseInt(starship.cost_in_credits).toLocaleString("en-US") + " gc"
+        }}
       </li>
       <li>
-        <b>Length:</b> {{ parseInt(starship.length).toLocaleString("en-US") }} m
+        <b>Length:</b>
+        {{
+          starship.length === "unknown"
+            ? "unknown"
+            : parseInt(starship.length).toLocaleString("en-US") + " m"
+        }}
       </li>
       <li>
         <b>Cargo Capacity:</b>
-        {{ parseInt(starship.cargo_capacity).toLocaleString("en-US") }} kg
+        {{
+          starship.cargo_capacity === "unknown"
+            ? "unknown"
+            : starship.cargo_capacity === "none" || starship.cargo_capacity == 0
+            ? "none"
+            : parseInt(starship.cargo_capacity).toLocaleString("en-US") + " kg"
+        }}
       </li>
-      <li v-if="starship.max_atmosphering_speed !== 'n/a'">
+      <li>
         <b>Max Atmosphering Speed:</b>
-        {{ parseInt(starship.max_atmosphering_speed).toLocaleString("en-US") }}
+        {{
+          starship.max_atmosphering_speed === "unknown"
+            ? "unknown"
+            : starship.max_atmosphering_speed === "n/a"
+            ? "n/a"
+            : parseInt(starship.max_atmosphering_speed).toLocaleString("en-US")
+        }}
       </li>
       <li><b>Hyperdrive Rating:</b> {{ starship.hyperdrive_rating }}</li>
       <li><b>MGLT:</b> {{ starship.MGLT }}</li>
       <li><b>Required Crew:</b> {{ starship.crew }}</li>
       <li><b>Passenger Capacity:</b> {{ starship.crew }}</li>
-      <li><b>Consumables:</b> {{ starship.consumables }}</li>
+      <li>
+        <b>Consumables:</b>
+        {{
+          starship.consumables === "none" || starship.consumables == 0
+            ? "none"
+            : starship.consumables
+        }}
+      </li>
     </ul>
 
     <Loader v-if="isLoading" />

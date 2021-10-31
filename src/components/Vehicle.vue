@@ -5,17 +5,52 @@
       <li><b>Class:</b> {{ vehicle.vehicle_class }}</li>
       <li><b>Model:</b> {{ vehicle.model }}</li>
       <li><b>Manufacturer:</b> {{ vehicle.manufacturer }}</li>
-      <li><b>Cost in Credits:</b> {{ vehicle.cost_in_credits }} gc</li>
-      <li><b>Length:</b> {{ vehicle.length }} m</li>
-      <li><b>Cargo Capacity:</b> {{ vehicle.cargo_capacity }} kg</li>
       <li>
-        <b>Max Atmosphering Speed:</b> {{ vehicle.max_atmosphering_speed }}
+        <b>Cost:</b>
+        {{
+          vehicle.cost_in_credits === "unknown"
+            ? "unknown"
+            : parseInt(vehicle.cost_in_credits).toLocaleString("en-US") + " gc"
+        }}
       </li>
-      <li><b>Hyperdrive Rating:</b> {{ vehicle.hyperdrive_rating }}</li>
-      <li><b>MGLT:</b> {{ vehicle.MGLT }}</li>
+      <li>
+        <b>Length:</b>
+        {{
+          vehicle.length === "unknown"
+            ? "unknown"
+            : parseInt(vehicle.length).toLocaleString("en-US") + " m"
+        }}
+      </li>
+      <li>
+        <b>Cargo Capacity:</b>
+        {{
+          vehicle.cargo_capacity === "unknown"
+            ? "unknown"
+            : vehicle.cargo_capacity === "none" || vehicle.cargo_capacity == 0
+            ? "none"
+            : parseInt(vehicle.cargo_capacity).toLocaleString("en-US") + " kg"
+        }}
+      </li>
+      <li>
+        <b>Max Atmosphering Speed:</b>
+        {{
+          vehicle.max_atmosphering_speed === "unknown"
+            ? "unknown"
+            : vehicle.max_atmosphering_speed === "n/a"
+            ? "n/a"
+            : parseInt(vehicle.max_atmosphering_speed).toLocaleString("en-US")
+        }}
+      </li>
       <li><b>Required Crew:</b> {{ vehicle.crew }}</li>
       <li><b>Passenger Capacity:</b> {{ vehicle.crew }}</li>
-      <li><b>Consumables:</b> {{ vehicle.consumables }}</li>
+      <li>
+        <b>Consumables:</b>
+        {{
+          vehicle.consumables === "none" || vehicle.consumables == 0
+            ? "none"
+            : vehicle.consumables
+        }}
+      </li>
     </ul>
 
     <Loader v-if="isLoading" />

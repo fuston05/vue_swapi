@@ -105,7 +105,7 @@ export default {
 
   .card {
     margin: 2% auto;
-    width: 50%;
+    width: 60%;
     max-width: 100%;
     background-color: rgba(255, 255, 255, 0.83);
     border-radius: 5px;

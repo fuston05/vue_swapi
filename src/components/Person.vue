@@ -8,8 +8,18 @@
       <li><b>Hair Color:</b> {{ person.hair_color }}</li>
       <li><b>Skin Color:</b> {{ person.skin_color }}</li>
       <li><b>Gender:</b> {{ person.gender }}</li>
-      <li><b>Height:</b> {{ (person.height / 2.54).toFixed(1) }} in</li>
-      <li><b>Weight:</b> {{ person.mass }} kg</li>
+      <li>
+        <b>Height:</b>
+        {{
+          person.height === "unknown"
+            ? "unknown"
+            : (person.height / 2.54).toFixed(1) + " in"
+        }}
+      </li>
+      <li>
+        <b>Weight:</b>
+        {{ person.mass === "unknown" ? "unknown" : person.mass + " kg" }}
+      </li>
       <li><b>Birth Year:</b> {{ person.birth_year }}</li>
       <li v-if="home"><b>Home World:</b> {{ home[0] }}</li>
     </ul>
