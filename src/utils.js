@@ -17,7 +17,7 @@ export async function fetchData(reqPage, pageData, resName) {
     // add to sessionStorage
     data.count && sessionStorage.setItem(resName, JSON.stringify(data));
   }
-  
+
   const _resource = data.results;
 
   // items per page
@@ -59,4 +59,14 @@ export async function getData(arr) {
     data.name ? resArr.push(data.name) : resArr.push(data.title);
   }
   return resArr;
+}
+
+export function scrollToTop() {
+  const ele = document.querySelector(".homeLink");
+  const top = ele.offsetTop;
+
+  window.scrollTo({
+    top: top,
+    behavior: "smooth"
+  });
 }
