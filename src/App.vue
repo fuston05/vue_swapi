@@ -1,4 +1,5 @@
 <template>
+  <span class="top"></span>
   <Nav v-if="!isMobile" />
   <MobileNav v-on:toggle-nav="toggleNav" v-if="isMobile" />
   <router-view v-on:close-mobile-nav="closeMobileNav" />
@@ -77,6 +78,12 @@ export default {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: black;
+
+  .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   .pageContainer {
     min-height: 100vh;

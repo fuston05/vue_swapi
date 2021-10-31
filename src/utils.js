@@ -1,5 +1,14 @@
+export function scrollToTop() {
+  const ele = document.querySelector(".top");
+  const top = ele.offsetTop;
+
+  window.scrollTo({
+    top: top,
+    behavior: "smooth"
+  });
+}
+
 export async function fetchData(reqPage, pageData, resName) {
-  console.log("reqPage: ", reqPage);
   if (reqPage === null) return;
   let data = {};
 
@@ -44,6 +53,8 @@ export async function fetchData(reqPage, pageData, resName) {
         .slice(-1)
     : null;
 
+  scrollToTop();
+
   return [_perPage, _page, _totalPages, _nextPage, _prevPage, _resource];
 }
 
@@ -59,14 +70,4 @@ export async function getData(arr) {
     data.name ? resArr.push(data.name) : resArr.push(data.title);
   }
   return resArr;
-}
-
-export function scrollToTop() {
-  const ele = document.querySelector(".homeLink");
-  const top = ele.offsetTop;
-
-  window.scrollTo({
-    top: top,
-    behavior: "smooth"
-  });
 }
