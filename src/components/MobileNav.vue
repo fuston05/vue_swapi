@@ -1,6 +1,6 @@
 <template>
   <nav id="mobile_nav">
-    <div class="top">
+    <div class="navTop">
       <router-link class="homeLink" to="/"><h1>Star Wars</h1></router-link>
 
       <img
@@ -38,8 +38,9 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+  height: auto;
 
-  .top {
+  .navTop {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -48,6 +49,11 @@ export default {
 
   a.homeLink {
     text-decoration: none;
+  }
+
+  h1 {
+    color: #ffe81a;
+    font-size: 2.6rem;
   }
 
   .mobile_nav_icon {
@@ -100,11 +106,6 @@ export default {
         text-decoration: underline;
       }
     }
-  }
-
-  h1 {
-    color: #ffe81a;
-    font-size: 2.6rem;
   }
 }
 </style>
