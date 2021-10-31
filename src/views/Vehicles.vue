@@ -62,7 +62,7 @@ export default {
         _nextPage,
         _prevPage,
         _resource
-      ] = await fetchData(reqPage, this.pageData, "vehicles");
+      ] = await fetchData(reqPage, this.pageData, `vehicles_${reqPage}`);
 
       this.pageData.perPage = _perPage;
       this.pageData.page = _page;

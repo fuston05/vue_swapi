@@ -52,7 +52,7 @@ export default {
   },
 
   methods: {
-    async setData(reqPage = "") {
+    async setData(reqPage = 1) {
       this.isLoading = true;
 
       const [
@@ -62,7 +62,7 @@ export default {
         _nextPage,
         _prevPage,
         _resource
-      ] = await fetchData(reqPage, this.pageData, "films");
+      ] = await fetchData(reqPage, this.pageData, `films_${reqPage}`);
 
       this.pageData.perPage = _perPage;
       this.pageData.page = _page;
