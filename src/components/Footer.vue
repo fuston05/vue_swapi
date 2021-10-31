@@ -35,12 +35,30 @@ export default {
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 750px) {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   span {
     font-size: 1.2rem;
+
+    @media (max-width: 750px) {
+      margin-bottom: 2%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   a {
     text-decoration: none;
+    
+    @media (max-width: 750px) {
+      margin-bottom: 2%;
+    }
 
     &:hover {
       cursor: pointer;
