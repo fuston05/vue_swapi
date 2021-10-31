@@ -6,17 +6,49 @@
       </li>
       <li>
         <b>Diameter:</b>
-        {{ (planet.diameter * 1000).toLocaleString("en-US") }} m
+        {{
+          planet.diameter === "unknown"
+            ? "unknown"
+            : (planet.diameter * 1000).toLocaleString("en-US")
+        }}
+        {{ planet.diameter > 0 ? " m" : "" }}
       </li>
       <li><b>Gravity:</b> {{ planet.gravity }}</li>
-      <li><b>Orbital Period:</b> {{ planet.orbital_period }} days</li>
-      <li><b>Rotation Period:</b> {{ planet.rotation_period }} hours</li>
+      <li>
+        <b>Orbital Period:</b>
+        {{
+          planet.orbital_period === "unknown"
+            ? "unknown"
+            : planet.orbital_period
+        }}
+        {{ planet.orbital_period > 0 ? " days" : "" }}
+      </li>
+      <li>
+        <b>Rotation Period:</b>
+        {{
+          planet.rotation_period === "unknown"
+            ? "unknown"
+            : planet.rotation_period
+        }}
+        {{ planet.rotation_period > 0 ? " hours" : "" }}
+      </li>
       <li>
         <b>Population:</b>
-        {{ parseInt(planet.population).toLocaleString("en-US") }}
+        {{
+          planet.population === "unknown"
+            ? "unknown"
+            : parseInt(planet.population).toLocaleString("en-US")
+        }}
       </li>
       <li><b>Climate:</b> {{ planet.climate }}</li>
-      <li><b>Surface Water:</b> {{ planet.surface_water }}&#37;</li>
+      <li>
+        <b>Surface Water:</b>
+        {{
+          planet.surface_water === "unknown"
+            ? "unknown"
+            : planet.surface_water + "%"
+        }}
+      </li>
       <li><b>Terrain:</b> {{ planet.terrain }}</li>
     </ul>
 
