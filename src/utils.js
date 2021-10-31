@@ -27,7 +27,6 @@ export async function fetchData(reqPage, pageData, resName) {
     data.count && sessionStorage.setItem(resName, JSON.stringify(data));
   }
 
-  console.log({ data });
   const _resource = data.results;
 
   // items per page
