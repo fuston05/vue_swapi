@@ -9,7 +9,7 @@ export default {
   name: "ToTop",
   methods: {
     scrollToTop() {
-      const ele = document.querySelector("#nav");
+      const ele = document.querySelector(".homeLink");
       const top = ele.offsetTop;
 
       window.scrollTo({
