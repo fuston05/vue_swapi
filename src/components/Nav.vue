@@ -30,6 +30,16 @@ export default {
 
   a.homeLink {
     text-decoration: none;
+    margin-right: 40px;
+
+    @media (max-width: 800px) {
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 600px) {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
 
     &:hover {
       cursor: pointer;
