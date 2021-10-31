@@ -40,6 +40,8 @@ export default {
   }
 
   a {
+    text-decoration: none;
+
     &:hover {
       cursor: pointer;
       opacity: 0.8;
